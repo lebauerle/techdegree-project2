@@ -8,19 +8,18 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function showPage (list, page){ 
-  //two variables that represent the index for the first and last student on the page
+  //two variables for the first and last student on the page
   const startIndex = (page * 9) - 9;
   const endIndex = (page * 9);
-  //select element `.student-list` and sotre it in variable
+  //select element `.student-list` and store it in variable
   const studList = document.querySelector('.student-list');
-  //set the innerHTML property of the variable to an empty string
+  //set the innerHTML property of the variable to ''
   studList.innerHTML = '';
     //loop over the length of the `list` parameter
     for (let i = 0; i < list.length; i += 1){
-      //inside the loop create a conditional to display the proper students
+      //conditional to display the proper students
       if ( i >= startIndex && i < endIndex){
-        //inside the conditional:
-        //create elements to display student information
+        //create variable with elements in template strings to display student information
         let studItem = 
         `
           <li class="student-item cf">
@@ -34,7 +33,7 @@ function showPage (list, page){
           </div>
           </li>
         `;
-    //insert the elements
+    //insert elements
     studList.insertAdjacentHTML('beforeend', studItem);
     };
   }
@@ -50,14 +49,13 @@ function addPagination(list) {
   let numberOfPages = Math.ceil(list.length / 9);
   //select the element `.link-list` and store it in variable
   let liLi = document.querySelector('.link-list')
-  //set the innerHTML property of the variable to empty string
-  liLi.innerHTML = ' ';
+  //set the innerHTML property of the variable to ''
+  liLi.innerHTML = '';
   //loop over the number of pages needed
     for (i = 1; i <= numberOfPages; i++){
-      //create the elements to display buttons
-      let btns = 
-      `<li><button type="button">${i}</button></li>`
-    //insert the elements
+      //variable with elements in template strings to display buttons
+      let btns = `<li><button type="button">${i}</button></li>`
+    //insert elements
     liLi.insertAdjacentHTML('beforeend', btns)
     //first pagination button gets class of "active"
     liLi.querySelector('button').className = 'active';
@@ -77,6 +75,6 @@ function addPagination(list) {
 }
 
 
-//Call functions
+//Call functions to show the students and page buttons
 showPage(data, 1);
 addPagination(data);
